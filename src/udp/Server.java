@@ -15,6 +15,13 @@ public class Server {
 	private AudioUDPServer audioUdpServer;
 	public static final String DIRECCION_MULTICAST = "229.5.6.7";
 	
+	public Server() throws InterruptedException, IOException{
+		//inicia el audio
+		audioUdpServer = new AudioUDPServer(this);
+		audioUdpServer.start();
+		
+	}
+	
 	
 	
 	public ServerSocket getdSock() {

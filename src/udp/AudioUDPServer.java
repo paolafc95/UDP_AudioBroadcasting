@@ -12,10 +12,17 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.TargetDataLine;
 
 public class AudioUDPServer extends Thread{
+	
 	private final byte audioBuffer[] = new byte[10000];
 	private TargetDataLine targetDataLine;
 	
 	private Server server;
+	
+	public void run()
+	{
+		setupAudio();
+		broadcastAudio();
+	}
 	
 	public AudioUDPServer (Server server) {
 		this.server = server;

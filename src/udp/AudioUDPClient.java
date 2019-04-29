@@ -16,6 +16,7 @@ import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.TargetDataLine;
 
 public class AudioUDPClient extends Thread{
+	
 	AudioInputStream audioInputStream;
 	SourceDataLine sourceDataLine;
 	
@@ -25,7 +26,10 @@ public class AudioUDPClient extends Thread{
 		this.cliente = cliente;
 	}
 	
-	//espacio para posible public void run()
+	public void run()
+	{
+		initiateAudio();
+	}
 	
 	public AudioFormat getAudioFormat() {
 		float sampleRate = 16000F;
@@ -53,6 +57,8 @@ public class AudioUDPClient extends Thread{
 	public void initiateAudio() {
 		try {
 			MulticastSocket socket = cliente.getDtSocket();
+			///InetAddress inetAddress = InetAddress.getByName("229.5.6.7");
+			///socket.joinGroup(inetAddress);
 			byte[] audioBuffer = new byte[10000];
 			
 			while(true) {
@@ -72,6 +78,7 @@ public class AudioUDPClient extends Thread{
 				playAudio();							
 				
 			}catch (Exception e) {
+				System.out.println("Error con los paquetes");
 				}			
 			}
 		}catch (Exception e) {
