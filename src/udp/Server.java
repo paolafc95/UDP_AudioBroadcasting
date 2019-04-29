@@ -16,9 +16,13 @@ public class Server {
 	public static final String DIRECCION_MULTICAST = "229.5.6.7";
 	
 	public Server() throws InterruptedException, IOException{
+		//esto puede ir después de ssl		
 		//inicia el audio
 		audioUdpServer = new AudioUDPServer(this);
 		audioUdpServer.start();
+		
+		AudioServer audioServer = new AudioServer();
+		audioServer.start();
 		
 	}
 	

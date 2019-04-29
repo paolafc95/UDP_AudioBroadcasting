@@ -15,6 +15,7 @@ public class Cliente {
 	public static final String DIRECCION_MULTICAST = "229.5.6.7";
 	
 	
+	
 	//lo de adentro iría donde sea que se inicie la conexión con el servidor
 	public void comunicacionConServidor() {
 		AudioUDPClient hiloAudio = new AudioUDPClient (this);
